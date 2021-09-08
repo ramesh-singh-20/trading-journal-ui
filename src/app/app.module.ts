@@ -3,12 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AllTradesComponent } from './components/all-trades/all-trades.component';
+import { AllAnalyticsComponent } from './components/all-analytics/all-analytics.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AllTradesComponent
+    AllAnalyticsComponent
   ],
   imports: [
     BrowserModule,
