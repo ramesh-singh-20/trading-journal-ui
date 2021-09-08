@@ -14,9 +14,9 @@ export interface Analytics {
     adjustedWinLossRatio: number;
     avgDaysGainsHeld: number;
     avgDaysLossesHeld: number;
-    month: string;
-    year: number;
-    tradeType: string;
-    shortLong: string;
-    chartPattern: string;
+    month?: string;
+    year?: number;
+    tradeType?: string;
+    shortLong?: string;
+    chartPattern?: string;
 }
