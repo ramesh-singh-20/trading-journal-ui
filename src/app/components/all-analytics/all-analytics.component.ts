@@ -16,6 +16,7 @@ export class AllAnalyticsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllAnalytics();
+    this.getAllAnalyticsByShortLong();
   }
 
 
@@ -26,7 +27,16 @@ export class AllAnalyticsComponent implements OnInit {
                                 'Win Loss Ratio', 'Largest Gain', 'Largest Loss', 'Net Average',
                                 'Percent Win', 'Percent Loss', 'Adjusted Win Loss Ratio',
                                 'Avg Days Gains Held', 'Avg Days Losses Held'];
-  dataSource :Analytics[];
+  allTradeDataSource :Analytics[];
+
+
+  displayedColumnsShortLong: string[] = ['Short or Long', 'Total Trades', 'Wins', 'Losses', 'Batting Average', 
+                                  'Average Gain', 'Average Loss', 
+                                'Win Loss Ratio', 'Largest Gain', 'Largest Loss', 'Net Average',
+                                'Percent Win', 'Percent Loss', 'Adjusted Win Loss Ratio',
+                                'Avg Days Gains Held', 'Avg Days Losses Held'];
+
+  allTradeDataByShortLongDataSource: Analytics[];
 
   getAllAnalytics(): void {
     this.analyticsService.getAllAnalytics()
@@ -34,7 +44,25 @@ export class AllAnalyticsComponent implements OnInit {
           response => {
             if(response.data!== null){
               this.hasResults= true;
-             this.dataSource= response.data;
+             this.allTradeDataSource= response.data;
+            }else{
+              console.log("Error.");
+            }
+          },
+          error =>{
+            console.log("Error: "+error);
+          }
+        );
+
+  }
+
+  getAllAnalyticsByShortLong(): void {
+    this.analyticsService.getAllAnalyticsByShortLong()
+        .subscribe(
+          response => {
+            if(response.data!== null){
+              this.hasResults= true;
+             this.allTradeDataByShortLongDataSource= response.data;
             }else{
               console.log("Error.");
             }
