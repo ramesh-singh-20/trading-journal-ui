@@ -17,6 +17,7 @@ export class AllAnalyticsComponent implements OnInit {
   ngOnInit(): void {
     this.getAllAnalytics();
     this.getAllAnalyticsByShortLong();
+    this.getAllAnalyticsByTradeType();
   }
 
 
@@ -37,6 +38,14 @@ export class AllAnalyticsComponent implements OnInit {
                                 'Avg Days Gains Held', 'Avg Days Losses Held'];
 
   allTradeDataByShortLongDataSource: Analytics[];
+
+  displayedColumnsTradeType: string[] = ['Trade Type', 'Total Trades', 'Wins', 'Losses', 'Batting Average', 
+                                  'Average Gain', 'Average Loss', 
+                                'Win Loss Ratio', 'Largest Gain', 'Largest Loss', 'Net Average',
+                                'Percent Win', 'Percent Loss', 'Adjusted Win Loss Ratio',
+                                'Avg Days Gains Held', 'Avg Days Losses Held'];
+
+  allTradeDataByTradeTypeDataSource: Analytics[];
 
   getAllAnalytics(): void {
     this.analyticsService.getAllAnalytics()
@@ -63,6 +72,24 @@ export class AllAnalyticsComponent implements OnInit {
             if(response.data!== null){
               this.hasResults= true;
              this.allTradeDataByShortLongDataSource= response.data;
+            }else{
+              console.log("Error.");
+            }
+          },
+          error =>{
+            console.log("Error: "+error);
+          }
+        );
+
+  }
+
+  getAllAnalyticsByTradeType(): void {
+    this.analyticsService.getAllAnalyticsByTradeType()
+        .subscribe(
+          response => {
+            if(response.data!== null){
+              this.hasResults= true;
+             this.allTradeDataByTradeTypeDataSource= response.data;
             }else{
               console.log("Error.");
             }
