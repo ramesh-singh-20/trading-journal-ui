@@ -18,6 +18,7 @@ export class AllAnalyticsComponent implements OnInit {
     this.getAllAnalytics();
     this.getAllAnalyticsByShortLong();
     this.getAllAnalyticsByTradeType();
+    this.getAllAnalyticsByChartPattern();
   }
 
 
@@ -37,7 +38,7 @@ export class AllAnalyticsComponent implements OnInit {
                                 'Percent Win', 'Percent Loss', 'Adjusted Win Loss Ratio',
                                 'Avg Days Gains Held', 'Avg Days Losses Held'];
 
-  allTradeDataByShortLongDataSource: Analytics[];
+  shortLongDataSource: Analytics[];
 
   displayedColumnsTradeType: string[] = ['Trade Type', 'Total Trades', 'Wins', 'Losses', 'Batting Average', 
                                   'Average Gain', 'Average Loss', 
@@ -45,7 +46,15 @@ export class AllAnalyticsComponent implements OnInit {
                                 'Percent Win', 'Percent Loss', 'Adjusted Win Loss Ratio',
                                 'Avg Days Gains Held', 'Avg Days Losses Held'];
 
-  allTradeDataByTradeTypeDataSource: Analytics[];
+  tradeTypeDataSource: Analytics[];
+
+  displayedColumnsChartPattern: string[] = ['Chart Pattern', 'Total Trades', 'Wins', 'Losses', 'Batting Average', 
+                                  'Average Gain', 'Average Loss', 
+                                'Win Loss Ratio', 'Largest Gain', 'Largest Loss', 'Net Average',
+                                'Percent Win', 'Percent Loss', 'Adjusted Win Loss Ratio',
+                                'Avg Days Gains Held', 'Avg Days Losses Held'];
+
+  chartPatternDataSource: Analytics[];
 
   getAllAnalytics(): void {
     this.analyticsService.getAllAnalytics()
@@ -71,7 +80,7 @@ export class AllAnalyticsComponent implements OnInit {
           response => {
             if(response.data!== null){
               this.hasResults= true;
-             this.allTradeDataByShortLongDataSource= response.data;
+             this.shortLongDataSource= response.data;
             }else{
               console.log("Error.");
             }
@@ -89,7 +98,25 @@ export class AllAnalyticsComponent implements OnInit {
           response => {
             if(response.data!== null){
               this.hasResults= true;
-             this.allTradeDataByTradeTypeDataSource= response.data;
+             this.tradeTypeDataSource= response.data;
+            }else{
+              console.log("Error.");
+            }
+          },
+          error =>{
+            console.log("Error: "+error);
+          }
+        );
+
+  }
+
+  getAllAnalyticsByChartPattern(): void {
+    this.analyticsService.getAllAnalyticsByChartPattern()
+        .subscribe(
+          response => {
+            if(response.data!== null){
+              this.hasResults= true;
+             this.chartPatternDataSource= response.data;
             }else{
               console.log("Error.");
             }

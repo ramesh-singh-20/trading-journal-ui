@@ -87,7 +87,7 @@
 
   <h3>Analytics: All Trade By Short or Long</h3>
 
-<table mat-table [dataSource]="allTradeDataByShortLongDataSource" class="mat-elevation-z8">
+<table mat-table [dataSource]="shortLongDataSource" class="mat-elevation-z8">
 
     <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
@@ -178,7 +178,7 @@
 
   <h3>Analytics: All Trade By Trade Type</h3>
 
-<table mat-table [dataSource]="allTradeDataByTradeTypeDataSource" class="mat-elevation-z8">
+<table mat-table [dataSource]="tradeTypeDataSource" class="mat-elevation-z8">
 
     <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
@@ -265,4 +265,95 @@
   
     <tr mat-header-row *matHeaderRowDef="displayedColumnsTradeType"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumnsTradeType;"></tr>
+  </table>
+
+  <h3>Analytics: All Trade By Chart Pattern</h3>
+
+  <table mat-table [dataSource]="chartPatternDataSource" class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+    <ng-container matColumnDef="Chart Pattern">
+      <th mat-header-cell *matHeaderCellDef> Chart Pattern </th>
+      <td mat-cell *matCellDef="let element"> {{element.chartPattern}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Total Trades">
+      <th mat-header-cell *matHeaderCellDef> Total Trades </th>
+      <td mat-cell *matCellDef="let element"> {{element.noOfTrades}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="Wins">
+      <th mat-header-cell *matHeaderCellDef> Wins </th>
+      <td mat-cell *matCellDef="let element"> {{element.wins}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="Losses">
+      <th mat-header-cell *matHeaderCellDef> Losses </th>
+      <td mat-cell *matCellDef="let element"> {{element.losses}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="Batting Average">
+      <th mat-header-cell *matHeaderCellDef> Batting Average </th>
+      <td mat-cell *matCellDef="let element"> {{element.battingAverage}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Average Gain">
+        <th mat-header-cell *matHeaderCellDef> Average Gain </th>
+        <td mat-cell *matCellDef="let element"> {{element.averageGain}} </td>
+      </ng-container>
+    
+      <ng-container matColumnDef="Average Loss">
+        <th mat-header-cell *matHeaderCellDef> Average Loss </th>
+        <td mat-cell *matCellDef="let element"> {{element.averageLoss}} </td>
+      </ng-container>
+    
+      <ng-container matColumnDef="Win Loss Ratio">
+        <th mat-header-cell *matHeaderCellDef> Win Loss Ratio </th>
+        <td mat-cell *matCellDef="let element"> {{element.winLossRatio}} </td>
+      </ng-container>
+    
+      <ng-container matColumnDef="Largest Gain">
+        <th mat-header-cell *matHeaderCellDef> Largest Gain </th>
+        <td mat-cell *matCellDef="let element"> {{element.largestGain}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Largest Loss">
+        <th mat-header-cell *matHeaderCellDef> Largest Loss </th>
+        <td mat-cell *matCellDef="let element"> {{element.largestLoss}} </td>
+      </ng-container>
+    
+      <ng-container matColumnDef="Net Average">
+        <th mat-header-cell *matHeaderCellDef> Net Average </th>
+        <td mat-cell *matCellDef="let element"> {{element.netAverage}} </td>
+      </ng-container>
+    
+      <ng-container matColumnDef="Percent Win">
+        <th mat-header-cell *matHeaderCellDef> Percent Win </th>
+        <td mat-cell *matCellDef="let element"> {{element.percentWin}} </td>
+      </ng-container>
+    
+      <ng-container matColumnDef="Percent Loss">
+        <th mat-header-cell *matHeaderCellDef> Percent Loss </th>
+        <td mat-cell *matCellDef="let element"> {{element.percentLoss}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Adjusted Win Loss Ratio">
+        <th mat-header-cell *matHeaderCellDef> Adjusted Win Loss Ratio </th>
+        <td mat-cell *matCellDef="let element"> {{element.adjustedWinLossRatio}} </td>
+      </ng-container>
+    
+      <ng-container matColumnDef="Avg Days Gains Held">
+        <th mat-header-cell *matHeaderCellDef> Avg Days Gains Held </th>
+        <td mat-cell *matCellDef="let element"> {{element.avgDaysGainsHeld}} </td>
+      </ng-container>
+    
+      <ng-container matColumnDef="Avg Days Losses Held">
+        <th mat-header-cell *matHeaderCellDef> Avg Days Losses Held </th>
+        <td mat-cell *matCellDef="let element"> {{element.avgDaysLossesHeld}} </td>
+      </ng-container>
+    
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumnsChartPattern"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumnsChartPattern;"></tr>
   </table>
