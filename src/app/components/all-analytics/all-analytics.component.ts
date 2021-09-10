@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { Analytics } from 'src/app/model/analytics';
 import { AllAnalyticsService } from 'src/app/service/all-analytics.service';
 
@@ -10,21 +10,23 @@ import { AllAnalyticsService } from 'src/app/service/all-analytics.service';
 export class AllAnalyticsComponent implements OnInit {
 
   constructor(private analyticsService: AllAnalyticsService) { 
+    
+  }
+
+
+  ngOnInit(): void {
     this.getAllAnalytics();
   }
 
-  ngOnInit(): void {
-  }
 
   hasResults: boolean= false;
 
-  allAnalytics: Analytics[]= [];
 
   displayedColumns: string[] = ['Total Trades', 'Wins', 'Losses', 'Batting Average', 'Average Gain', 'Average Loss', 
                                 'Win Loss Ratio', 'Largest Gain', 'Largest Loss', 'Net Average',
                                 'Percent Win', 'Percent Loss', 'Adjusted Win Loss Ratio',
                                 'Avg Days Gains Held', 'Avg Days Losses Held'];
-  dataSource = this.allAnalytics;
+  dataSource :Analytics[];
 
   getAllAnalytics(): void {
     this.analyticsService.getAllAnalytics()
@@ -32,8 +34,7 @@ export class AllAnalyticsComponent implements OnInit {
           response => {
             if(response.data!== null){
               this.hasResults= true;
-              console.log("Response: "+response.data.averageGain)
-              this.allAnalytics.push(response.data);
+             this.dataSource= response.data;
             }else{
               console.log("Error.");
             }
@@ -42,5 +43,6 @@ export class AllAnalyticsComponent implements OnInit {
             console.log("Error: "+error);
           }
         );
+
   }
 }
