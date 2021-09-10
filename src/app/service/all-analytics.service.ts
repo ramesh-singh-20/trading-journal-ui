@@ -1,34 +1,25 @@
 import { Injectable } from '@angular/core';
 import { Analytics } from '../model/analytics';
 import { Observable, of } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { AnalyticsResponse } from '../model/analytics-response';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AllAnalyticsService {
 
-  constructor() { }
+  constructor( private http: HttpClient) { }
 
-  analyticsResponse: Analytics[]= [{
-    noOfTrades: 37,
-    wins: 27,
-    losses: 10,
-    battingAverage: 72.97,
-    averageGain: 9.34,
-    averageLoss: 4.63,
-    winLossRatio: 2.02,
-    largestGain: 22.76,
-    largestLoss: 10.0,
-    netAverage: 4.71,
-    percentWin: 72.97,
-    percentLoss: 27.03,
-    adjustedWinLossRatio: 5.45,
-    avgDaysGainsHeld: 7.93,
-    avgDaysLossesHeld: 11.6
+  private allAnalyticsURL= 'http://localhost:8080/analytics';
 
-}];
-
-getAllAnalytics(): Observable<Analytics[]> {
-  return of(this.analyticsResponse);
+getAllAnalytics(): Observable<AnalyticsResponse> {
+  let headers= new HttpHeaders()
+               .set('Access-Control-Allow-Origin','*')
+               .set('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS')
+               .set('Access-Control-Allow-Headers', 'Origin, Content-Type, X-Auth-Token');
+  return this.http.get<AnalyticsResponse>(this.allAnalyticsURL, {
+    headers
+  });
 }
 }

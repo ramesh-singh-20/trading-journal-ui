@@ -9,10 +9,14 @@ import { AllAnalyticsService } from 'src/app/service/all-analytics.service';
 })
 export class AllAnalyticsComponent implements OnInit {
 
-  constructor(private analyticsService: AllAnalyticsService) { }
+  constructor(private analyticsService: AllAnalyticsService) { 
+    this.getAllAnalytics();
+  }
 
   ngOnInit(): void {
   }
+
+  hasResults: boolean= false;
 
   allAnalytics: Analytics[]= [];
 
@@ -20,10 +24,23 @@ export class AllAnalyticsComponent implements OnInit {
                                 'Win Loss Ratio', 'Largest Gain', 'Largest Loss', 'Net Average',
                                 'Percent Win', 'Percent Loss', 'Adjusted Win Loss Ratio',
                                 'Avg Days Gains Held', 'Avg Days Losses Held'];
-  dataSource = this.analyticsService.getAllAnalytics();
+  dataSource = this.allAnalytics;
 
   getAllAnalytics(): void {
     this.analyticsService.getAllAnalytics()
-        .subscribe(allAnalytics => this.allAnalytics = allAnalytics);
+        .subscribe(
+          response => {
+            if(response.data!== null){
+              this.hasResults= true;
+              console.log("Response: "+response.data.averageGain)
+              this.allAnalytics.push(response.data);
+            }else{
+              console.log("Error.");
+            }
+          },
+          error =>{
+            console.log("Error: "+error);
+          }
+        );
   }
 }
