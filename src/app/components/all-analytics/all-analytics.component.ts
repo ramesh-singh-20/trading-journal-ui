@@ -29,7 +29,7 @@ export class AllAnalyticsComponent implements OnInit {
                                 'Win Loss Ratio', 'Largest Gain', 'Largest Loss', 'Net Average',
                                 'Percent Win', 'Percent Loss', 'Adjusted Win Loss Ratio',
                                 'Avg Days Gains Held', 'Avg Days Losses Held'];
-  allTradeDataSource :Analytics[];
+  allTradeDataSource :Analytics[]= [];
 
 
   displayedColumnsShortLong: string[] = ['Short or Long', 'Total Trades', 'Wins', 'Losses', 'Batting Average', 
@@ -38,7 +38,7 @@ export class AllAnalyticsComponent implements OnInit {
                                 'Percent Win', 'Percent Loss', 'Adjusted Win Loss Ratio',
                                 'Avg Days Gains Held', 'Avg Days Losses Held'];
 
-  shortLongDataSource: Analytics[];
+  shortLongDataSource: Analytics[]= [];
 
   displayedColumnsTradeType: string[] = ['Trade Type', 'Total Trades', 'Wins', 'Losses', 'Batting Average', 
                                   'Average Gain', 'Average Loss', 
@@ -46,7 +46,7 @@ export class AllAnalyticsComponent implements OnInit {
                                 'Percent Win', 'Percent Loss', 'Adjusted Win Loss Ratio',
                                 'Avg Days Gains Held', 'Avg Days Losses Held'];
 
-  tradeTypeDataSource: Analytics[];
+  tradeTypeDataSource: Analytics[]= [];
 
   displayedColumnsChartPattern: string[] = ['Chart Pattern', 'Total Trades', 'Wins', 'Losses', 'Batting Average', 
                                   'Average Gain', 'Average Loss', 
@@ -54,7 +54,7 @@ export class AllAnalyticsComponent implements OnInit {
                                 'Percent Win', 'Percent Loss', 'Adjusted Win Loss Ratio',
                                 'Avg Days Gains Held', 'Avg Days Losses Held'];
 
-  chartPatternDataSource: Analytics[];
+  chartPatternDataSource: Analytics[]= [];
 
   getAllAnalytics(): void {
     this.analyticsService.getAllAnalytics()
@@ -71,7 +71,6 @@ export class AllAnalyticsComponent implements OnInit {
             console.log("Error: "+error);
           }
         );
-
   }
 
   getAllAnalyticsByShortLong(): void {
