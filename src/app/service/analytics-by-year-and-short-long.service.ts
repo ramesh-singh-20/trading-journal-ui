@@ -13,12 +13,13 @@ export class AnalyticsByYearAndShortLongService {
   private analyticsByYearAndShortLongURL = 'http://localhost:8080/analytics/short-long/year/';
 
 
-  getAllAnalyticsByYearAndShortLong(): Observable<AnalyticsResponse> {
+  getAllAnalyticsByYearAndShortLong(shortLong: string): Observable<AnalyticsResponse> {
     let headers = new HttpHeaders()
       .set('Access-Control-Allow-Origin', '*')
       .set('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS')
       .set('Access-Control-Allow-Headers', 'Origin, Content-Type, X-Auth-Token');
-    return this.http.get<AnalyticsResponse>(this.analyticsByYearAndShortLongURL, {
+      let url: string= this.analyticsByYearAndShortLongURL+shortLong;
+    return this.http.get<AnalyticsResponse>(url, {
       headers
     });
   }

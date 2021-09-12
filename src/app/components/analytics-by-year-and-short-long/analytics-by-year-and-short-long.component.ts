@@ -13,7 +13,7 @@ export class AnalyticsByYearAndShortLongComponent implements OnInit {
   constructor(private analyticsByYearAndShortLong: AnalyticsByYearAndShortLongService) { }
 
   ngOnInit(): void {
-    this.getAllAnalyticsByYear();
+
   }
 
 
@@ -21,7 +21,7 @@ export class AnalyticsByYearAndShortLongComponent implements OnInit {
 
   shortLongValues: ShortLong[] =[
     {value: 'SHORT', viewValue: 'Short'},
-    {value: 'LONG', viewValue: 'long'}
+    {value: 'LONG', viewValue: 'Long'}
   ];
 
 
@@ -33,8 +33,8 @@ export class AnalyticsByYearAndShortLongComponent implements OnInit {
   analyticsByYearAndShortLongDataSource :Analytics[]= [];
 
 
-  getAllAnalyticsByYear(): void {
-    this.analyticsByYearAndShortLong.getAllAnalyticsByYearAndShortLong()
+  getAllAnalyticsByYearAndShortLong(shortLong: string): void {
+    this.analyticsByYearAndShortLong.getAllAnalyticsByYearAndShortLong(shortLong)
         .subscribe(
           response => {
             if(response.data!== null){

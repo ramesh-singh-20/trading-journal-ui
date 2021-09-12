@@ -1,13 +1,13 @@
 <mat-form-field appearance="fill">
-  <mat-label>Favorite food</mat-label>
-  <mat-select>
+  <mat-label>Short or Long</mat-label>
+  <mat-select (selectionChange)='getAllAnalyticsByYearAndShortLong($event.value)'>
     <mat-option *ngFor="let values of shortLongValues" [value]="values.value">
       {{values.viewValue}}
     </mat-option>
   </mat-select>
 </mat-form-field>
 
-
+<div [style.display]= "hasResults ? 'block' : 'none'">
 <h3>Analytics: All Trades By Year And Short Long</h3>
 
 <table mat-table [dataSource]="analyticsByYearAndShortLongDataSource" class="mat-elevation-z8">
@@ -96,3 +96,4 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
+  </div>
