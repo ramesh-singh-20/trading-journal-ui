@@ -1,5 +1,5 @@
 import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
-import { Analytics } from 'src/app/model/analytics';
+import { Analytics } from 'src/app/model/analytics.interface';
 import { AllAnalyticsService } from 'src/app/service/all-analytics.service';
 
 @Component({

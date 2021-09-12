@@ -1,15 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { Analytics } from 'src/app/model/analytics.interface';
-import { AnalyticsByYearService } from 'src/app/service/analytics-by-year.service';
+import { AnalyticsByYearAndShortLongService } from 'src/app/service/analytics-by-year-and-short-long.service';
+import {ShortLong} from 'src/app/model/short-long.interface';
 
 @Component({
-  selector: 'app-analytics-by-year',
-  templateUrl: './analytics-by-year.component.html',
-  styleUrls: ['./analytics-by-year.component.scss']
+  selector: 'app-analytics-by-year-and-short-long',
+  templateUrl: './analytics-by-year-and-short-long.component.html',
+  styleUrls: ['./analytics-by-year-and-short-long.component.scss']
 })
-export class AnalyticsByYearComponent implements OnInit {
+export class AnalyticsByYearAndShortLongComponent implements OnInit {
 
-  constructor(private analyticsByYearService: AnalyticsByYearService) { }
+  constructor(private analyticsByYearAndShortLong: AnalyticsByYearAndShortLongService) { }
 
   ngOnInit(): void {
     this.getAllAnalyticsByYear();
@@ -18,23 +19,28 @@ export class AnalyticsByYearComponent implements OnInit {
 
   hasResults: boolean= false;
 
+  shortLongValues: ShortLong[] =[
+    {value: 'SHORT', viewValue: 'Short'},
+    {value: 'LONG', viewValue: 'long'}
+  ];
+
 
   displayedColumns: string[] = ['Year', 'Total Trades', 'Wins', 'Losses', 'Batting Average', 'Average Gain', 'Average Loss', 
                                 'Win Loss Ratio', 'Largest Gain', 'Largest Loss', 'Net Average',
                                 'Percent Win', 'Percent Loss', 'Adjusted Win Loss Ratio',
                                 'Avg Days Gains Held', 'Avg Days Losses Held'];
                                 
-  allAnalyticsByYearDataSource :Analytics[]= [];
+  analyticsByYearAndShortLongDataSource :Analytics[]= [];
 
 
   getAllAnalyticsByYear(): void {
-    this.analyticsByYearService.getAllAnalyticsByYear()
+    this.analyticsByYearAndShortLong.getAllAnalyticsByYearAndShortLong()
         .subscribe(
           response => {
             if(response.data!== null){
               this.hasResults= true;
-             this.allAnalyticsByYearDataSource= response.data;
-             console.log(this.allAnalyticsByYearDataSource.length)
+             this.analyticsByYearAndShortLongDataSource= response.data;
+             console.log(this.analyticsByYearAndShortLongDataSource.length)
             }else{
               console.log("Error.");
             }

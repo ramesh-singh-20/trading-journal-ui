@@ -10,6 +10,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { SideNavComponent } from './components/side-nav/side-nav.component';
 import { AnalyticsByYearMonthComponent } from './components/analytics-by-year-month/analytics-by-year-month.component';
 import { AnalyticsByYearComponent } from './components/analytics-by-year/analytics-by-year.component';
+import { AnalyticsByYearAndShortLongComponent } from './components/analytics-by-year-and-short-long/analytics-by-year-and-short-long.component';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -18,16 +20,19 @@ import { AnalyticsByYearComponent } from './components/analytics-by-year/analyti
     SideNavComponent,
     AnalyticsByYearMonthComponent,
     AnalyticsByYearComponent,
+    AnalyticsByYearAndShortLongComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatTableModule,
-    HttpClientModule
+    HttpClientModule,
+    MatSelectModule
   ],
   exports :[
-    MatTableModule
+    MatTableModule,
+    MatSelectModule
   ],
 
   providers: [],

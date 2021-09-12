@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { AnalyticsResponse } from '../model/analytics-response';
+import { AnalyticsResponse } from '../model/analytics-response.interface';
 
 @Injectable({
   providedIn: 'root'
