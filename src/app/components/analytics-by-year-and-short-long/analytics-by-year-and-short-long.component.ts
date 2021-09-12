@@ -15,6 +15,7 @@ export class AnalyticsByYearAndShortLongComponent implements OnInit {
   ngOnInit(): void {
 
   }
+  
 
 
   hasResults: boolean= false;
