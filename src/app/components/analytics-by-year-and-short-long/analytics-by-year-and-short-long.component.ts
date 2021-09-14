@@ -22,11 +22,6 @@ export class AnalyticsByYearAndShortLongComponent implements OnInit {
 
   shortLongValues:String[]= [];
 
-  /* shortLongValues: ShortLong[] =[
-    {value: 'SHORT', viewValue: 'Short'},
-    {value: 'LONG', viewValue: 'Long'}
-  ]; */
-
 
   displayedColumns: string[] = ['Year', 'Total Trades', 'Wins', 'Losses', 'Batting Average', 'Average Gain', 'Average Loss', 
                                 'Win Loss Ratio', 'Largest Gain', 'Largest Loss', 'Net Average',

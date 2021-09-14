@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Analytics } from 'src/app/model/analytics.interface';
+import { AnalyticsByYearAndTradeTypeService } from 'src/app/service/analytics-by-year-and-trade-type.service';
 
 @Component({
   selector: 'app-analytics-by-year-and-trade-type',
@@ -7,9 +9,51 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AnalyticsByYearAndTradeTypeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private analyticsByYearAndTradeType: AnalyticsByYearAndTradeTypeService) { }
 
   ngOnInit(): void {
+    this.getTradeTypeValues();
+  }
+  
+
+
+  hasResults: boolean= false;
+
+  tradeTypeValues:String[]= [];
+
+
+  displayedColumns: string[] = ['Year', 'Total Trades', 'Wins', 'Losses', 'Batting Average', 'Average Gain', 'Average Loss', 
+                                'Win Loss Ratio', 'Largest Gain', 'Largest Loss', 'Net Average',
+                                'Percent Win', 'Percent Loss', 'Adjusted Win Loss Ratio',
+                                'Avg Days Gains Held', 'Avg Days Losses Held'];
+                                
+  analyticsByYearAndTradeTypeDataSource :Analytics[]= [];
+
+
+  getAllAnalyticsByYearAndTradeType(tradeType: string): void {
+    this.analyticsByYearAndTradeType.getAllAnalyticsByYearAndTradeType(tradeType)
+        .subscribe(
+          response => {
+            if(response.data!== null){
+              this.hasResults= true;
+             this.analyticsByYearAndTradeTypeDataSource= response.data;
+            }else{
+              console.log("Error.");
+            }
+          },
+          error =>{
+            console.log("Error: "+error);
+          }
+        );
+  }
+
+  getTradeTypeValues(){
+    this.analyticsByYearAndTradeType.getTradeTypeValues()
+         .subscribe(
+           response => {
+             this.tradeTypeValues= response;
+           }
+         )
   }
 
 }

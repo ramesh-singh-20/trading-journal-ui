@@ -10,7 +10,7 @@ export class AnalyticsByYearAndTradeTypeService {
 
   constructor(private http: HttpClient) { }
 
-  private analyticsByYearAndTradeTypeURL = 'ttp://localhost:8080/analytics/trade-type/year/';
+  private analyticsByYearAndTradeTypeURL = 'http://localhost:8080/analytics/trade-type/year/';
   private distinctTradeTypeURL= 'http://localhost:8080/analytics/distinct/trade-type';
 
 
