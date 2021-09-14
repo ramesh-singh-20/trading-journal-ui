@@ -13,6 +13,7 @@ import { AnalyticsByYearComponent } from './components/analytics-by-year/analyti
 import { AnalyticsByYearAndShortLongComponent } from './components/analytics-by-year-and-short-long/analytics-by-year-and-short-long.component';
 import {MatSelectModule} from '@angular/material/select';
 import { AnalyticsByYearAndTradeTypeComponent } from './components/analytics-by-year-and-trade-type/analytics-by-year-and-trade-type.component';
+import { AnalyticsByYearAndChartPatternComponent } from './components/analytics-by-year-and-chart-pattern/analytics-by-year-and-chart-pattern.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { AnalyticsByYearAndTradeTypeComponent } from './components/analytics-by-
     AnalyticsByYearComponent,
     AnalyticsByYearAndShortLongComponent,
     AnalyticsByYearAndTradeTypeComponent,
+    AnalyticsByYearAndChartPatternComponent,
   ],
   imports: [
     BrowserModule,
