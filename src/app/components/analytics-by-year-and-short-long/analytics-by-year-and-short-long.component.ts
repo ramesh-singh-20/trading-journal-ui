@@ -13,17 +13,19 @@ export class AnalyticsByYearAndShortLongComponent implements OnInit {
   constructor(private analyticsByYearAndShortLong: AnalyticsByYearAndShortLongService) { }
 
   ngOnInit(): void {
-
+    this.getShortLongValues();
   }
   
 
 
   hasResults: boolean= false;
 
-  shortLongValues: ShortLong[] =[
+  shortLongValues:String[]= [];
+
+  /* shortLongValues: ShortLong[] =[
     {value: 'SHORT', viewValue: 'Short'},
     {value: 'LONG', viewValue: 'Long'}
-  ];
+  ]; */
 
 
   displayedColumns: string[] = ['Year', 'Total Trades', 'Wins', 'Losses', 'Batting Average', 'Average Gain', 'Average Loss', 
@@ -41,7 +43,6 @@ export class AnalyticsByYearAndShortLongComponent implements OnInit {
             if(response.data!== null){
               this.hasResults= true;
              this.analyticsByYearAndShortLongDataSource= response.data;
-             console.log(this.analyticsByYearAndShortLongDataSource.length)
             }else{
               console.log("Error.");
             }
@@ -50,6 +51,15 @@ export class AnalyticsByYearAndShortLongComponent implements OnInit {
             console.log("Error: "+error);
           }
         );
+  }
+
+  getShortLongValues(){
+    this.analyticsByYearAndShortLong.getShortLongValues()
+         .subscribe(
+           response => {
+             this.shortLongValues= response;
+           }
+         )
   }
 
 }

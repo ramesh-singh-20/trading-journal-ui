@@ -1,8 +1,8 @@
 <mat-form-field appearance="fill">
   <mat-label>Short or Long</mat-label>
   <mat-select (selectionChange)='getAllAnalyticsByYearAndShortLong($event.value)'>
-    <mat-option *ngFor="let values of shortLongValues" [value]="values.value">
-      {{values.viewValue}}
+    <mat-option *ngFor="let values of shortLongValues" [value]="values">
+      {{values}}
     </mat-option>
   </mat-select>
 </mat-form-field>
