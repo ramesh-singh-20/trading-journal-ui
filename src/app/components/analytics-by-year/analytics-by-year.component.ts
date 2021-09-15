@@ -15,8 +15,11 @@ export class AnalyticsByYearComponent implements OnInit {
     this.getAllAnalyticsByYear();
   }
 
+  yearString: string= '';
+
 
   hasResults: boolean= false;
+  hasMonthResults: boolean= false;
 
 
   displayedColumns: string[] = ['Year', 'Total Trades', 'Wins', 'Losses', 'Batting Average', 'Average Gain', 'Average Loss', 
@@ -26,6 +29,13 @@ export class AnalyticsByYearComponent implements OnInit {
                                 
   allAnalyticsByYearDataSource :Analytics[]= [];
 
+  displayedMonthColumns: string[] = ['Month', 'Total Trades', 'Wins', 'Losses', 'Batting Average', 'Average Gain', 'Average Loss', 
+                                'Win Loss Ratio', 'Largest Gain', 'Largest Loss', 'Net Average',
+                                'Percent Win', 'Percent Loss', 'Adjusted Win Loss Ratio',
+                                'Avg Days Gains Held', 'Avg Days Losses Held'];
+
+  displayedAnalyticsByMonthDataSource: Analytics[]= [];
+
 
   getAllAnalyticsByYear(): void {
     this.analyticsByYearService.getAllAnalyticsByYear()
@@ -34,7 +44,24 @@ export class AnalyticsByYearComponent implements OnInit {
             if(response.data!== null){
               this.hasResults= true;
              this.allAnalyticsByYearDataSource= response.data;
-             console.log(this.allAnalyticsByYearDataSource.length)
+            }else{
+              console.log("Error.");
+            }
+          },
+          error =>{
+            console.log("Error: "+error);
+          }
+        );
+  }
+
+  getAllAnalyticsByMonth(year: string): void {
+    this.yearString= year;
+    this.analyticsByYearService.getAllAnalyticsByMonth(year)
+        .subscribe(
+          response => {
+            if(response.data!== null){
+              this.hasMonthResults= true;
+             this.displayedAnalyticsByMonthDataSource= response.data;
             }else{
               console.log("Error.");
             }
