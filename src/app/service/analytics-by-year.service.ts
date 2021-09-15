@@ -12,6 +12,8 @@ export class AnalyticsByYearService {
 
   private analyticsByYearURL = 'http://localhost:8080/analytics/year';
 
+  private analyticsByMonthURL = 'http://localhost:8080/analytics/';
+
 
   getAllAnalyticsByYear(): Observable<AnalyticsResponse> {
     let headers = new HttpHeaders()
@@ -19,6 +21,18 @@ export class AnalyticsByYearService {
       .set('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS')
       .set('Access-Control-Allow-Headers', 'Origin, Content-Type, X-Auth-Token');
     return this.http.get<AnalyticsResponse>(this.analyticsByYearURL, {
+      headers
+    });
+  }
+
+  getAllAnalyticsByMonth(year: string): Observable<AnalyticsResponse> {
+    let headers = new HttpHeaders()
+      .set('Access-Control-Allow-Origin', '*')
+      .set('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS')
+      .set('Access-Control-Allow-Headers', 'Origin, Content-Type, X-Auth-Token');
+     
+    let url: string= this.analyticsByMonthURL+year;
+    return this.http.get<AnalyticsResponse>(url, {
       headers
     });
   }
