@@ -41,7 +41,7 @@ export class AnalyticsByYearAndTradeTypeService {
       .set('Access-Control-Allow-Origin', '*')
       .set('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS')
       .set('Access-Control-Allow-Headers', 'Origin, Content-Type, X-Auth-Token');
-      let url: string= this.analyticsByYearAndTradeTypeURL+tradeType+'/'+year;
+      let url: string= this.analyticsByMonthAndTradeTypeURL+tradeType+'/'+year;
     return this.http.get<AnalyticsResponse>(url, {
       headers
     });
