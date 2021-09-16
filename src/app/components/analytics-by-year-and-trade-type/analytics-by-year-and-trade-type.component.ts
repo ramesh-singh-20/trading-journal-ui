@@ -15,9 +15,11 @@ export class AnalyticsByYearAndTradeTypeComponent implements OnInit {
     this.getTradeTypeValues();
   }
   
-
+yearString: string= '';
+tradeTypeString: string= '';
 
   hasResults: boolean= false;
+  hasMonthResults: boolean= false;
 
   tradeTypeValues:String[]= [];
 
@@ -29,8 +31,16 @@ export class AnalyticsByYearAndTradeTypeComponent implements OnInit {
                                 
   analyticsByYearAndTradeTypeDataSource :Analytics[]= [];
 
+  displayedMonthColumns: string[] = ['Month', 'Total Trades', 'Wins', 'Losses', 'Batting Average', 'Average Gain', 'Average Loss', 
+                                'Win Loss Ratio', 'Largest Gain', 'Largest Loss', 'Net Average',
+                                'Percent Win', 'Percent Loss', 'Adjusted Win Loss Ratio',
+                                'Avg Days Gains Held', 'Avg Days Losses Held'];
+                                
+  analyticsByMonthAndTradeTypeDataSource :Analytics[]= [];
+
 
   getAllAnalyticsByYearAndTradeType(tradeType: string): void {
+    this.tradeTypeString= tradeType;
     this.analyticsByYearAndTradeType.getAllAnalyticsByYearAndTradeType(tradeType)
         .subscribe(
           response => {
@@ -54,6 +64,24 @@ export class AnalyticsByYearAndTradeTypeComponent implements OnInit {
              this.tradeTypeValues= response;
            }
          )
+  }
+
+  getAllAnalyticsByMonthAndTradeType(year: string): void {
+    this.yearString= year;
+    this.analyticsByYearAndTradeType.getAllAnalyticsByMonthAndTradeType(this.tradeTypeString, year)
+        .subscribe(
+          response => {
+            if(response.data!== null){
+              this.hasMonthResults= true;
+             this.analyticsByMonthAndTradeTypeDataSource= response.data;
+            }else{
+              console.log("Error.");
+            }
+          },
+          error =>{
+            console.log("Error: "+error);
+          }
+        );
   }
 
 }
