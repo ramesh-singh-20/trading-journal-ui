@@ -40,6 +40,7 @@ tradeTypeString: string= '';
 
 
   getAllAnalyticsByYearAndTradeType(tradeType: string): void {
+    this.hasMonthResults= false;
     this.tradeTypeString= tradeType;
     this.analyticsByYearAndTradeType.getAllAnalyticsByYearAndTradeType(tradeType)
         .subscribe(
