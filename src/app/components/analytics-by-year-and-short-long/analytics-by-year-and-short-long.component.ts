@@ -15,10 +15,12 @@ export class AnalyticsByYearAndShortLongComponent implements OnInit {
   ngOnInit(): void {
     this.getShortLongValues();
   }
-  
 
+  yearString: string= '';
+  shortLongString: string= '';  
 
   hasResults: boolean= false;
+  hasMonthResults: boolean= false;
 
   shortLongValues:String[]= [];
 
@@ -30,8 +32,17 @@ export class AnalyticsByYearAndShortLongComponent implements OnInit {
                                 
   analyticsByYearAndShortLongDataSource :Analytics[]= [];
 
+  displayedMonthColumns: string[] = ['Month', 'Total Trades', 'Wins', 'Losses', 'Batting Average', 'Average Gain', 'Average Loss', 
+                                'Win Loss Ratio', 'Largest Gain', 'Largest Loss', 'Net Average',
+                                'Percent Win', 'Percent Loss', 'Adjusted Win Loss Ratio',
+                                'Avg Days Gains Held', 'Avg Days Losses Held'];
+                                
+  analyticsByMonthAndShortLongDataSource :Analytics[]= [];
+
 
   getAllAnalyticsByYearAndShortLong(shortLong: string): void {
+    this.hasMonthResults= false;
+    this.shortLongString= shortLong;
     this.analyticsByYearAndShortLong.getAllAnalyticsByYearAndShortLong(shortLong)
         .subscribe(
           response => {
@@ -55,6 +66,25 @@ export class AnalyticsByYearAndShortLongComponent implements OnInit {
              this.shortLongValues= response;
            }
          )
+  }
+
+  getAllAnalyticsByMonthAndShortLong(year: string): void {
+    this.hasMonthResults= false;
+    this.yearString= year;
+    this.analyticsByYearAndShortLong.getAllAnalyticsByMonthAndShortLong(this.shortLongString, year)
+        .subscribe(
+          response => {
+            if(response.data!== null){
+              this.hasMonthResults= true;
+             this.analyticsByMonthAndShortLongDataSource= response.data;
+            }else{
+              console.log("Error.");
+            }
+          },
+          error =>{
+            console.log("Error: "+error);
+          }
+        );
   }
 
 }
