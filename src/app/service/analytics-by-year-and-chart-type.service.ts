@@ -42,7 +42,7 @@ export class AnalyticsByYearAndChartTypeService {
       .set('Access-Control-Allow-Origin', '*')
       .set('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS')
       .set('Access-Control-Allow-Headers', 'Origin, Content-Type, X-Auth-Token');
-      let url: string= this.analyticsByYearAndChartPatternURL+chartPattern+'/'+year;
+      let url: string= this.analyticsByMonthAndChartPatternURL+chartPattern+'/'+year;
     return this.http.get<AnalyticsResponse>(url, {
       headers
     });
