@@ -23,7 +23,6 @@ tradeTypeString: string= '';
 
   tradeTypeValues:String[]= [];
 
-
   displayedColumns: string[] = ['Year', 'Total Trades', 'Wins', 'Losses', 'Batting Average', 'Average Gain', 'Average Loss', 
                                 'Win Loss Ratio', 'Largest Gain', 'Largest Loss', 'Net Average',
                                 'Percent Win', 'Percent Loss', 'Adjusted Win Loss Ratio',
