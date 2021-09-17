@@ -12,6 +12,8 @@ export class AnalyticsByYearAndChartTypeService {
 
   private analyticsByYearAndChartPatternURL = 'http://localhost:8080/analytics/chart-pattern/year/';
   private distinctChartPatternURL= 'http://localhost:8080/analytics/distinct/chart-pattern';
+  private analyticsByMonthAndChartPatternURL = 'http://localhost:8080/analytics/chart-pattern/';
+
 
 
   getAllAnalyticsByYearAndChartPattern(chartPattern: string): Observable<AnalyticsResponse> {
@@ -31,6 +33,17 @@ export class AnalyticsByYearAndChartTypeService {
       .set('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS')
       .set('Access-Control-Allow-Headers', 'Origin, Content-Type, X-Auth-Token');
     return this.http.get<String[]>(this.distinctChartPatternURL, {
+      headers
+    });
+  }
+
+  getAllAnalyticsByMonthAndChartPattern(chartPattern: string, year: string): Observable<AnalyticsResponse> {
+    let headers = new HttpHeaders()
+      .set('Access-Control-Allow-Origin', '*')
+      .set('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS')
+      .set('Access-Control-Allow-Headers', 'Origin, Content-Type, X-Auth-Token');
+      let url: string= this.analyticsByYearAndChartPatternURL+chartPattern+'/'+year;
+    return this.http.get<AnalyticsResponse>(url, {
       headers
     });
   }
