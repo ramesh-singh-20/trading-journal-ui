@@ -1,4 +1,4 @@
-<h3>Analytics: All Trades</h3>
+<a routerLink="/analytics-by-year" routerLinkActive="active"><h3>Analytics: All Trades</h3></a>
 
 <table mat-table [dataSource]="allTradeDataSource" class="mat-elevation-z8">
 
@@ -85,7 +85,7 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 
-  <h3>Analytics: All Trades By Short or Long</h3>
+<a routerLink="/analytics-by-year-and-short-long" routerLinkActive="active"><h3>Analytics: All Trades By Short or Long</h3></a>
 
 <table mat-table [dataSource]="shortLongDataSource" class="mat-elevation-z8">
 
@@ -176,7 +176,9 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumnsShortLong;"></tr>
   </table>
 
+<a routerLink="/analytics-by-year-and-trade-type" routerLinkActive="active"> 
   <h3>Analytics: All Trades By Trade Type</h3>
+</a>
 
 <table mat-table [dataSource]="tradeTypeDataSource" class="mat-elevation-z8">
 
@@ -267,7 +269,9 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumnsTradeType;"></tr>
   </table>
 
+<a routerLink="/analytics-by-year-and-chart-type" routerLinkActive="active">  
   <h3>Analytics: All Trades By Chart Pattern</h3>
+</a>  
 
   <table mat-table [dataSource]="chartPatternDataSource" class="mat-elevation-z8">
 
