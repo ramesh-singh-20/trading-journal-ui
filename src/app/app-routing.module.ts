@@ -5,6 +5,7 @@ import { AnalyticsByYearAndChartPatternComponent } from './components/analytics-
 import { AnalyticsByYearAndShortLongComponent } from './components/analytics-by-year-and-short-long/analytics-by-year-and-short-long.component';
 import { AnalyticsByYearAndTradeTypeComponent } from './components/analytics-by-year-and-trade-type/analytics-by-year-and-trade-type.component';
 import { AnalyticsByYearComponent } from './components/analytics-by-year/analytics-by-year.component';
+import { TradeJournalComponent } from './components/trade-journal/trade-journal.component';
 
 const routes: Routes = [
   {path: 'all-analytics', component: AllAnalyticsComponent},
@@ -12,6 +13,7 @@ const routes: Routes = [
   {path: 'analytics-by-year-and-short-long', component: AnalyticsByYearAndShortLongComponent},
   {path: 'analytics-by-year-and-trade-type', component: AnalyticsByYearAndTradeTypeComponent},
   {path: 'analytics-by-year-and-chart-type', component: AnalyticsByYearAndChartPatternComponent},
+  {path: 'trade-data', component: TradeJournalComponent},
   { path: '',   redirectTo: '/all-analytics', pathMatch: 'full' }
 ];
 

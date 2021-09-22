@@ -13,6 +13,8 @@ import { AnalyticsByYearAndShortLongComponent } from './components/analytics-by-
 import {MatSelectModule} from '@angular/material/select';
 import { AnalyticsByYearAndTradeTypeComponent } from './components/analytics-by-year-and-trade-type/analytics-by-year-and-trade-type.component';
 import { AnalyticsByYearAndChartPatternComponent } from './components/analytics-by-year-and-chart-pattern/analytics-by-year-and-chart-pattern.component';
+import { TradeJournalComponent } from './components/trade-journal/trade-journal.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,7 @@ import { AnalyticsByYearAndChartPatternComponent } from './components/analytics-
     AnalyticsByYearAndShortLongComponent,
     AnalyticsByYearAndTradeTypeComponent,
     AnalyticsByYearAndChartPatternComponent,
+    TradeJournalComponent,
   ],
   imports: [
     BrowserModule,
@@ -30,11 +33,13 @@ import { AnalyticsByYearAndChartPatternComponent } from './components/analytics-
     BrowserAnimationsModule,
     MatTableModule,
     HttpClientModule,
-    MatSelectModule
+    MatSelectModule,
+    MatPaginatorModule
   ],
   exports :[
     MatTableModule,
-    MatSelectModule
+    MatSelectModule,
+    MatPaginatorModule
   ],
 
   providers: [],
