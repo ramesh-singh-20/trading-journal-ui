@@ -14,6 +14,7 @@ import {MatSelectModule} from '@angular/material/select';
 import { AnalyticsByYearAndTradeTypeComponent } from './components/analytics-by-year-and-trade-type/analytics-by-year-and-trade-type.component';
 import { AnalyticsByYearAndChartPatternComponent } from './components/analytics-by-year-and-chart-pattern/analytics-by-year-and-chart-pattern.component';
 import { TradeJournalComponent } from './components/trade-journal/trade-journal.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -32,11 +33,13 @@ import { TradeJournalComponent } from './components/trade-journal/trade-journal.
     BrowserAnimationsModule,
     MatTableModule,
     HttpClientModule,
-    MatSelectModule
+    MatSelectModule,
+    MatPaginatorModule
   ],
   exports :[
     MatTableModule,
-    MatSelectModule
+    MatSelectModule,
+    MatPaginatorModule
   ],
 
   providers: [],
