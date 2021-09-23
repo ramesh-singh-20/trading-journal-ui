@@ -1,5 +1,5 @@
 export interface Trade {
-    id: number;
+    id?: number;
     stock: string;
     entryPrice: number;
     entryDate: string;
