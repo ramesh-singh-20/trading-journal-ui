@@ -1,0 +1,18 @@
+table {
+    width: 100%;
+    padding: 15px;
+}
+
+th.mat-header-cell {
+  text-align: center !important;
+}
+
+td, th{
+    width: 32px;
+    border: 1px solid currentColor;
+    text-align: center
+}
+      
+.mat-row:nth-child(odd){
+  background-color: rgba(0,0,0,.05);
+}
