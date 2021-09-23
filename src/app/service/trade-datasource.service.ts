@@ -20,6 +20,7 @@ export class TradeDatasourceService implements DataSource<Trade>{
   }
 
   loadTrades(page: number, pageSize: number): void {
+    console.log("DataSource: Inside loadTrades");
     this.loadingSubject.next(true);
     this.tradeService.getTrades(page, pageSize).subscribe(
       response => {

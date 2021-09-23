@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTable } from '@angular/material/table';
 import { Trade } from 'src/app/model/trade.interface';
@@ -12,7 +12,23 @@ import { TradeService } from 'src/app/service/trade.service';
 })
 export class TradeJournalComponent implements OnInit, AfterViewInit {
 
-  constructor(private tradeService: TradeService) { }
+  constructor(private tradeService: TradeService,
+    private cdref: ChangeDetectorRef) { }
+
+  displayedColumns: string[]= [
+    'ID',
+    'Stock',
+    'Entry Price',
+    'Entry Date',
+    'Exit Price',
+    'Exit Date',
+    'Profitable',
+    'Trade Type',
+    'Trade Direction',
+    'Chart Pattern',
+    'Comments After Buy',
+    'Comments After Sell'
+  ]
 
   ngOnInit(): void {
   }
@@ -28,6 +44,13 @@ export class TradeJournalComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     this.tradesDataSource= new TradeDatasourceService(this.tradeService);
     this.tradesDataSource.setPaginator(this.paginator);
+    this.cdref.detectChanges();
+
+    this.tradesDataSource.loadTrades(
+      this.tradesDataSource.getPaginator().pageIndex,
+      this.tradesDataSource.getPaginator().pageSize
+    );
+    
     this.paginator.page.subscribe(() => {
       this.tradesDataSource.loadTrades(
         this.tradesDataSource.getPaginator().pageIndex,
