@@ -3,6 +3,7 @@ import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
 import { TradeService } from 'src/app/service/trade.service';
 import {MatDialogRef} from '@angular/material/dialog';
 import { Trade } from 'src/app/model/trade.interface';
+import { DateValidator } from 'src/app/validators/date.validator';
 
 @Component({
   selector: 'app-add-trade-dialog',
@@ -11,13 +12,16 @@ import { Trade } from 'src/app/model/trade.interface';
 })
 export class AddTradeDialogComponent implements OnInit {
   addTradeFormGroup: any;
+  priceRegex= /^-?\d*[.,]?\d{0,2}$/;
 
   constructor(private tradeService: TradeService,
               private fb: FormBuilder,
               public dialogRef: MatDialogRef<AddTradeDialogComponent>) { 
       this.addTradeFormGroup= this.fb.group(
         {
-          stock: ['', Validators.required]
+          stock: ['', Validators.required],
+          entryPrice: ['', [Validators.required, Validators.pattern(this.priceRegex)]],
+          entryDate: ['', Validators.compose([Validators.required, DateValidator.dateVaidator])]
         }
       )
     }
@@ -29,9 +33,19 @@ export class AddTradeDialogComponent implements OnInit {
     return this.addTradeFormGroup.get('stock');
   }
 
+  get entryPrice(): AbstractControl {
+    return this.addTradeFormGroup.get('entryPrice');
+  }
+
+  get entryDate(): AbstractControl {
+    return this.addTradeFormGroup.get('entryDate');
+  }
+
   onSubmit(): void {
     if(this.addTradeFormGroup.valid){
       console.log("Inside Submit method.")
+      console.log("Date Value: "+this.entryDate.value)
+      this.dialogRef.close();
     }
   }
 
