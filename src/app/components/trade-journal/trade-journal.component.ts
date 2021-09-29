@@ -19,7 +19,6 @@ export class TradeJournalComponent implements OnInit, AfterViewInit {
               public dialog: MatDialog) { }
 
   displayedColumns: string[]= [
-    'ID',
     'Stock',
     'Entry Price',
     'Entry Date',
