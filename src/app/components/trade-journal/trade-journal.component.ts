@@ -1,9 +1,11 @@
 import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTable } from '@angular/material/table';
 import { Trade } from 'src/app/model/trade.interface';
 import { TradeDatasourceService } from 'src/app/service/trade-datasource.service';
 import { TradeService } from 'src/app/service/trade.service';
+import { AddTradeDialogComponent } from '../add-trade-dialog/add-trade-dialog.component';
 
 @Component({
   selector: 'app-trade-journal',
@@ -13,7 +15,8 @@ import { TradeService } from 'src/app/service/trade.service';
 export class TradeJournalComponent implements OnInit, AfterViewInit {
 
   constructor(private tradeService: TradeService,
-    private cdref: ChangeDetectorRef) { }
+              private cdref: ChangeDetectorRef,
+              public dialog: MatDialog) { }
 
   displayedColumns: string[]= [
     'ID',
@@ -59,4 +62,17 @@ export class TradeJournalComponent implements OnInit, AfterViewInit {
     });
   }
 
+  addTrade(): void {
+    const dialogRef= this.dialog.open(AddTradeDialogComponent, {
+      ariaLabel: 'Add Trade'
+    });
+    dialogRef.afterClosed().subscribe(() => this.retrieveTrades());
+  }
+
+  retrieveTrades(): void {
+    this.tradesDataSource.loadTrades(
+      this.tradesDataSource.getPaginator().pageIndex,
+      this.tradesDataSource.getPaginator().pageSize
+    );
+  }
 }

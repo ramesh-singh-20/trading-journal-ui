@@ -3,6 +3,9 @@
     <mat-card-header>
         <mat-card-title>Trade Details</mat-card-title>
     </mat-card-header>
+    <button mat-icon-button aria-lable="Add Trade" (click)="addTrade()">
+        <mat-icon>add_box</mat-icon>
+    </button>
     <mat-card-content>
         <table mat-table [dataSource]= "tradesDataSource">
             
