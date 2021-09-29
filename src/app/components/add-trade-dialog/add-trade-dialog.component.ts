@@ -21,7 +21,13 @@ export class AddTradeDialogComponent implements OnInit {
         {
           stock: ['', Validators.required],
           entryPrice: ['', [Validators.required, Validators.pattern(this.priceRegex)]],
-          entryDate: ['', Validators.compose([Validators.required, DateValidator.dateVaidator])]
+          entryDate: ['', Validators.compose([Validators.required, DateValidator.dateVaidator])],
+          tradeType: ['', Validators.required],
+          shortLong: ['', Validators.required],
+          chartPattern: ['', Validators.required],
+          exitPrice: ['', [Validators.pattern(this.priceRegex)]],
+          exitDate: ['', Validators.compose([DateValidator.dateVaidator])],
+
         }
       )
     }
@@ -40,6 +46,35 @@ export class AddTradeDialogComponent implements OnInit {
   get entryDate(): AbstractControl {
     return this.addTradeFormGroup.get('entryDate');
   }
+
+  get tradeType(): AbstractControl {
+    return this.addTradeFormGroup.get('tradeType');
+  }
+
+  get shortLong(): AbstractControl {
+    return this.addTradeFormGroup.get('shortLong');
+  }
+
+  get chartPattern(): AbstractControl {
+    return this.addTradeFormGroup.get('chartPattern');
+  }
+
+  get exitPrice(): AbstractControl {
+    return this.addTradeFormGroup.get('exitPrice');
+  }
+
+  get exitDate(): AbstractControl {
+    return this.addTradeFormGroup.get('exitDate');
+  }
+
+  get commentsAfterBuy(): AbstractControl {
+    return this.addTradeFormGroup.get('commentsAfterBuy');
+  }
+
+  get commentsAfterSell(): AbstractControl {
+    return this.addTradeFormGroup.get('commentsAfterSell');
+  }
+
 
   onSubmit(): void {
     if(this.addTradeFormGroup.valid){

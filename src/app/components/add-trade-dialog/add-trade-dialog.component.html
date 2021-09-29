@@ -14,7 +14,7 @@
                 </mat-form-field>
                 <mat-form-field>
                     <mat-label>Entry Price</mat-label>
-                    <input matInput type="text" placeHolder="Entry Price" formControlName="entryPrice" required>
+                    <input matInput type="number" placeHolder="Entry Price" formControlName="entryPrice" required>
                     <mat-error *ngIf="entryPrice.hasError('required')">
                         This field is required.
                     </mat-error>
@@ -31,6 +31,50 @@
                     <mat-error *ngIf="entryDate.hasError('dateVaidator')">
                         Please enter valid date.
                     </mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Trade Type</mat-label>
+                    <input matInput type="text" placeHolder="Trade Type" formControlName="tradeType" required>
+                    <mat-error *ngIf="tradeType.hasError('required')">
+                        This field is required.
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Trade Direction</mat-label>
+                    <input matInput type="text" placeHolder="Trade Direction" formControlName="shortLong" required>
+                    <mat-error *ngIf="shortLong.hasError('required')">
+                        This field is required.
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Chart Pattern</mat-label>
+                    <input matInput type="text" placeHolder="Chart Pattern" formControlName="chartPattern" required>
+                    <mat-error *ngIf="chartPattern.hasError('required')">
+                        This field is required.
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Exit Price</mat-label>
+                    <input matInput type="number" placeHolder="Exit Price" formControlName="exitPrice">
+                    <mat-error *ngIf="exitPrice.hasError('pattern')">
+                        Please enter valid price.
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Exit Date</mat-label>
+                    <input matInput type="date" placeHolder="Exit Date" formControlName="exitDate">
+        
+                    <mat-error *ngIf="exitDate.hasError('dateVaidator')">
+                        Please enter valid date.
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Comments After Buy</mat-label>
+                    <input matInput type="text" placeHolder="Comments After Buy" formControlName="commentsAfterBuy">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Comments After Sell</mat-label>
+                    <input matInput type="text" placeHolder="Chart Pattern" formControlName="commentsAfterSell">
                 </mat-form-field>
             </div>
         </div>
