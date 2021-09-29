@@ -17,6 +17,12 @@ import { TradeJournalComponent } from './components/trade-journal/trade-journal.
 import { MatPaginatorModule } from '@angular/material/paginator';
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
+import { AddTradeDialogComponent } from './components/add-trade-dialog/add-trade-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatIconModule} from '@angular/material/icon';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -28,6 +34,7 @@ import {MatButtonModule} from '@angular/material/button';
     AnalyticsByYearAndTradeTypeComponent,
     AnalyticsByYearAndChartPatternComponent,
     TradeJournalComponent,
+    AddTradeDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -38,14 +45,25 @@ import {MatButtonModule} from '@angular/material/button';
     MatSelectModule,
     MatPaginatorModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDialogModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatIconModule,
+    ReactiveFormsModule
   ],
   exports :[
     MatTableModule,
     MatSelectModule,
     MatPaginatorModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDialogModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatIconModule,
+    ReactiveFormsModule
   ],
 
   providers: [],
