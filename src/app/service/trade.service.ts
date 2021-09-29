@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { AddTradeResponse } from '../model/add-trade-response.interface';
 import { TradeResponse } from '../model/trade-response.interface';
 import { Trade } from '../model/trade.interface';
 
@@ -30,8 +31,8 @@ export class TradeService {
   }
 
 
-  addTrade(tradeData: Trade): void {
-    this.http.post(this.tradeURL, tradeData, {
+  addTrade(tradeData: Trade): Observable<AddTradeResponse> {
+    return this.http.post<AddTradeResponse>(this.tradeURL, tradeData, {
       headers: this.getHeaders()
     })
   }

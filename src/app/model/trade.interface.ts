@@ -2,9 +2,9 @@ export interface Trade {
     id?: number;
     stock: string;
     entryPrice: number;
-    entryDate: string;
+    entryDate: Date;
     exitPrice?: number;
-    exitDate?: string;
+    exitDate?: Date;
     isProfitable?: string;
     tradeType: string;
     shortLong: string;
