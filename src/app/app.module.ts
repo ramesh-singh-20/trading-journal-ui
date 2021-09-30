@@ -23,6 +23,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DeleteTradeDialogComponent } from './components/delete-trade-dialog/delete-trade-dialog.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     AnalyticsByYearAndTradeTypeComponent,
     AnalyticsByYearAndChartPatternComponent,
     TradeJournalComponent,
-    AddTradeDialogComponent
+    AddTradeDialogComponent,
+    DeleteTradeDialogComponent
   ],
   imports: [
     BrowserModule,
