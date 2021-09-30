@@ -16,17 +16,17 @@ export class EditTradeDialogComponent implements OnInit {
   priceRegex = /^-?\d*[.,]?\d{0,2}$/;
 
   constructor(public fb: FormBuilder,
-              public dialogRef: MatDialogRef<EditTradeDialogComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: Trade,
-              public tradeService: TradeService) { 
-                this.editTradeFormGroup= this.generateEditTradeFormGroup();
-              }
+    public dialogRef: MatDialogRef<EditTradeDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: Trade,
+    public tradeService: TradeService) {
+    this.editTradeFormGroup = this.generateEditTradeFormGroup();
+  }
 
   ngOnInit(): void {
   }
 
   generateEditTradeFormGroup(): FormGroup {
-    return this.fb.group (
+    return this.fb.group(
       {
         stock: [this.data.stock, Validators.required],
         entryPrice: [this.data.entryPrice, [Validators.required, Validators.pattern(this.priceRegex)]],
@@ -37,13 +37,54 @@ export class EditTradeDialogComponent implements OnInit {
         exitPrice: [this.data.exitPrice, [Validators.pattern(this.priceRegex)]],
         exitDate: [this.data.exitDate, Validators.compose([DateValidator.dateVaidator])],
         commentsAfterBuy: [this.data.commentsAfterBuy],
-        commentsAfterSell: [this.data.commentsAfterSell] 
+        commentsAfterSell: [this.data.commentsAfterSell]
       }
     )
   }
 
   onNoClick(): void {
     this.dialogRef.close();
+  }
+
+  onSubmit(): void {
+    if (this.editTradeFormGroup.valid) {
+      this.tradeService.editTrade(this.editTradeFormGroupToTrade()).subscribe();
+      this.dialogRef.close();
+    }
+  }
+
+  onReset(): void {
+    this.editTradeFormGroup= this.generateEditTradeFormGroup();
+  }
+
+  editTradeFormGroupToTrade(): Trade {
+
+    const trade: Trade = {
+      id: this.data.id,
+      stock: this.stock.value,
+      entryPrice: this.entryPrice.value,
+      entryDate: this.parseDate(this.entryDate.value),
+      tradeType: this.tradeType.value,
+      shortLong: this.shortLong.value,
+      chartPattern: this.chartPattern.value,
+      exitPrice: this.exitPrice.value,
+      exitDate: this.parseDate(this.exitDate.value),
+      commentsAfterBuy: this.commentsAfterBuy.value,
+      commentsAfterSell: this.commentsAfterSell.value
+    };
+
+    return trade;
+  }
+
+  parseDate(oldDate: Date): Date {
+    let newDate = new Date(oldDate);
+    newDate.setMinutes(newDate.getMinutes() + newDate.getTimezoneOffset());
+
+    return newDate;
+  }
+
+  get id(): AbstractControl {
+    return this.editTradeFormGroup.get('id');
   }
 
   get stock(): AbstractControl {
