@@ -7,6 +7,7 @@ import { TradeDatasourceService } from 'src/app/service/trade-datasource.service
 import { TradeService } from 'src/app/service/trade.service';
 import { AddTradeDialogComponent } from '../add-trade-dialog/add-trade-dialog.component';
 import { DeleteTradeDialogComponent } from '../delete-trade-dialog/delete-trade-dialog.component';
+import { EditTradeDialogComponent } from '../edit-trade-dialog/edit-trade-dialog.component';
 
 @Component({
   selector: 'app-trade-journal',
@@ -71,7 +72,12 @@ export class TradeJournalComponent implements OnInit, AfterViewInit {
   }
 
   updateTrade(element: any): void {
-    console.log("Inside updateTrade() method.");
+    console.log(element.id);
+    const dialogRef= this.dialog.open(EditTradeDialogComponent, {
+      data: element,
+      ariaLabel: 'Edit Trade'
+    });
+    dialogRef.afterClosed().subscribe(() => this.retrieveTrades());
   }
 
   deleteTrade(id: number): void {
