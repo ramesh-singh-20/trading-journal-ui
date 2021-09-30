@@ -6,6 +6,7 @@ import { Trade } from 'src/app/model/trade.interface';
 import { TradeDatasourceService } from 'src/app/service/trade-datasource.service';
 import { TradeService } from 'src/app/service/trade.service';
 import { AddTradeDialogComponent } from '../add-trade-dialog/add-trade-dialog.component';
+import { DeleteTradeDialogComponent } from '../delete-trade-dialog/delete-trade-dialog.component';
 
 @Component({
   selector: 'app-trade-journal',
@@ -74,7 +75,14 @@ export class TradeJournalComponent implements OnInit, AfterViewInit {
   }
 
   deleteTrade(id: number): void {
-    console.log("Inside deleteTrade() method: "+id);
+    const dialogRef= this.dialog.open(DeleteTradeDialogComponent, {
+      data: {
+        id: id
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(() => this.retrieveTrades());
+
   }
 
   retrieveTrades(): void {
