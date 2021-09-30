@@ -34,13 +34,19 @@ export class TradeService {
   addTrade(tradeData: Trade): Observable<AddTradeResponse> {
     return this.http.post<AddTradeResponse>(this.tradeURL, tradeData, {
       headers: this.getHeaders()
-    })
+    });
   }
 
   deleteTrade(id: number): Observable<AddTradeResponse> {
     let url: string= this.tradeURL+"/"+id;
     return this.http.delete<AddTradeResponse>(url,  {
       headers: this.getHeaders()
-    })
+    });
+  }
+
+  editTrade(tradeData: Trade): Observable<AddTradeResponse> {
+    return this.http.put<AddTradeResponse>(this.tradeURL, tradeData, {
+      headers: this.getHeaders()
+    });
   }
 }
