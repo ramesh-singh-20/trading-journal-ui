@@ -12,6 +12,10 @@ td, th{
     border: 1px solid currentColor;
     text-align: center
 }
+
+.mat-cell {
+  padding: 3px;
+}
       
 .mat-row:nth-child(odd){
   background-color: rgba(0,0,0,.05);

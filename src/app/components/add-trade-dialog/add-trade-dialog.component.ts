@@ -3,8 +3,8 @@ import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
 import { TradeService } from 'src/app/service/trade.service';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Trade } from 'src/app/model/trade.interface';
-import { DateValidator } from 'src/app/validators/date.validator';
-import { throwError } from 'rxjs';
+import { DateValidator } from 'src/app/util/validators/date.validator';
+
 
 @Component({
   selector: 'app-add-trade-dialog',
