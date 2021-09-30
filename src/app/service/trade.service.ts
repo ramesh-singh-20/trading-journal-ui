@@ -36,4 +36,11 @@ export class TradeService {
       headers: this.getHeaders()
     })
   }
+
+  deleteTrade(id: number): Observable<AddTradeResponse> {
+    let url: string= this.tradeURL+"/"+id;
+    return this.http.delete<AddTradeResponse>(url,  {
+      headers: this.getHeaders()
+    })
+  }
 }
