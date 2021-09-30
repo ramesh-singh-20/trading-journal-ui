@@ -24,7 +24,7 @@ export class DeleteTradeDialogComponent implements OnInit {
 
   submit(): void {
     const id= this.data.id;
-    this.tradeService.deleteTrade(id);
+    this.tradeService.deleteTrade(id).subscribe();
     this.dialogRef.close();
   }
 
