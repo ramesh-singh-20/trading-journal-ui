@@ -29,7 +29,8 @@ export class TradeJournalComponent implements OnInit, AfterViewInit {
     'Trade Direction',
     'Chart Pattern',
     'Comments After Buy',
-    'Comments After Sell'
+    'Comments After Sell',
+    'Actions'
   ]
 
   ngOnInit(): void {
@@ -68,10 +69,18 @@ export class TradeJournalComponent implements OnInit, AfterViewInit {
     dialogRef.afterClosed().subscribe(() => this.retrieveTrades());
   }
 
+  updateTrade(element: any): void {
+    console.log("Inside updateTrade() method.");
+  }
+
+  deleteTrade(id: number): void {
+    console.log("Inside deleteTrade() method: "+id);
+  }
+
   retrieveTrades(): void {
     this.tradesDataSource.loadTrades(
-      this.tradesDataSource.getPaginator().pageIndex,
-      this.tradesDataSource.getPaginator().pageSize
+      0,
+      10
     );
   }
 }
