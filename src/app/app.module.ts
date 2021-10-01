@@ -25,6 +25,7 @@ import {MatIconModule} from '@angular/material/icon';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DeleteTradeDialogComponent } from './components/delete-trade-dialog/delete-trade-dialog.component';
 import { EditTradeDialogComponent } from './components/edit-trade-dialog/edit-trade-dialog.component';
+import { PortfolioAnalysisComponent } from './components/portfolio-analysis/portfolio-analysis.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { EditTradeDialogComponent } from './components/edit-trade-dialog/edit-tr
     TradeJournalComponent,
     AddTradeDialogComponent,
     DeleteTradeDialogComponent,
-    EditTradeDialogComponent
+    EditTradeDialogComponent,
+    PortfolioAnalysisComponent
   ],
   imports: [
     BrowserModule,
