@@ -69,7 +69,7 @@ export class PortfolioAnalysisComponent implements OnInit {
             97, 101, 105, 104, 107, 110, 115,
             111, 106, 108, 109, 116, 121, 120],
           backgroundColor: 'green',
-          borderWidth: 1,
+          borderWidth: 3,
 
         }]
       },
