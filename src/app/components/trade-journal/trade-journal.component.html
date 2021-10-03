@@ -29,6 +29,26 @@
                 <td mat-cell *matCellDef="let element"> {{element.entryDate}} </td>
             </ng-container>
 
+            <ng-container matColumnDef="Stop Loss">
+                <th mat-header-cell *matHeaderCellDef> Stop Loss </th>
+                <td mat-cell *matCellDef="let element"> {{element.stopLoss}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Amount Risked">
+                <th mat-header-cell *matHeaderCellDef> Amount Risked </th>
+                <td mat-cell *matCellDef="let element"> {{element.amountRisked}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Risk Per Position">
+                <th mat-header-cell *matHeaderCellDef> Risk Per Position </th>
+                <td mat-cell *matCellDef="let element"> {{element.riskPercentPosition}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Risk Per Portfolio">
+                <th mat-header-cell *matHeaderCellDef> Risk Per Portfolio </th>
+                <td mat-cell *matCellDef="let element"> {{element.riskPercentPortfolio}} </td>
+            </ng-container>
+
             <ng-container matColumnDef="Exit Price">
                 <th mat-header-cell *matHeaderCellDef> Exit Price </th>
                 <td mat-cell *matCellDef="let element"> {{element.exitPrice}} </td>

@@ -23,6 +23,10 @@ export class AddTradeDialogComponent implements OnInit {
         stock: ['', Validators.required],
         entryPrice: ['', [Validators.required, Validators.pattern(this.priceRegex)]],
         entryDate: ['', Validators.compose([Validators.required, DateValidator.dateVaidator])],
+        stopLoss: ['', [Validators.required, Validators.pattern(this.priceRegex)]],
+        amountRisked: ['', [Validators.required, Validators.pattern(this.priceRegex)]],
+        riskPercentPosition: ['', [Validators.required, Validators.pattern(this.priceRegex)]],
+        riskPercentPortfolio: ['', [Validators.required, Validators.pattern(this.priceRegex)]],
         tradeType: ['', Validators.required],
         shortLong: ['', Validators.required],
         chartPattern: ['', Validators.required],
@@ -44,6 +48,22 @@ export class AddTradeDialogComponent implements OnInit {
 
   get entryPrice(): AbstractControl {
     return this.addTradeFormGroup.get('entryPrice');
+  }
+
+  get stopLoss(): AbstractControl {
+    return this.addTradeFormGroup.get('stopLoss');
+  }
+
+  get amountRisked(): AbstractControl {
+    return this.addTradeFormGroup.get('amountRisked');
+  }
+
+  get riskPercentPosition(): AbstractControl {
+    return this.addTradeFormGroup.get('riskPercentPosition');
+  }
+
+  get riskPercentPortfolio(): AbstractControl {
+    return this.addTradeFormGroup.get('riskPercentPortfolio');
   }
 
   get entryDate(): AbstractControl {
@@ -100,6 +120,10 @@ export class AddTradeDialogComponent implements OnInit {
       stock: this.stock.value,
       entryPrice: this.entryPrice.value,
       entryDate: this.parseDate(this.entryDate.value),
+      stopLoss: this.stopLoss.value,
+      amountRisked: this.amountRisked.value,
+      riskPercentPosition: this.riskPercentPosition.value,
+      riskPercentPortfolio: this.riskPercentPortfolio.value,
       tradeType: this.tradeType.value,
       shortLong: this.shortLong.value,
       chartPattern: this.chartPattern.value,
