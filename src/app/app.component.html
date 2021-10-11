@@ -1,2 +1,35 @@
-<h1>{{title}}</h1>
-<router-outlet></router-outlet>
+<mat-toolbar class="mat-elevation-z8">
+    <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
+        <mat-icon *ngIf="!sidenav.opened">
+            menu
+        </mat-icon>
+        <mat-icon *ngIf="sidenav.opened">
+            close
+        </mat-icon>
+    </button>
+    Trading Journal
+</mat-toolbar>
+
+<mat-sidenav-container>
+    <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
+
+        <button mat-button class="menu-button" [routerLink]="['all-analytics']">
+            <mat-icon>dashboard</mat-icon>
+            <span>Analytics</span>
+        </button>
+        <button mat-button class="menu-button" [routerLink]="['trade-data']">
+            <mat-icon>table_chart</mat-icon>
+            <span>Trades</span>
+        </button>
+        <button mat-button class="menu-button" [routerLink]="['portfolio-analysis']" >
+            <mat-icon>bar_chart</mat-icon>
+            <span>Portfolio</span>
+        </button>
+
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <div class="content mat-elevation-z8">
+            <router-outlet></router-outlet>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

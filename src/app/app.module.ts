@@ -26,6 +26,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { DeleteTradeDialogComponent } from './components/delete-trade-dialog/delete-trade-dialog.component';
 import { EditTradeDialogComponent } from './components/edit-trade-dialog/edit-trade-dialog.component';
 import { PortfolioAnalysisComponent } from './components/portfolio-analysis/portfolio-analysis.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatDividerModule } from '@angular/material/divider';
 
 @NgModule({
   declarations: [
@@ -56,7 +59,10 @@ import { PortfolioAnalysisComponent } from './components/portfolio-analysis/port
     MatInputModule,
     MatFormFieldModule,
     MatIconModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatDividerModule
   ],
   exports :[
     MatTableModule,
@@ -69,7 +75,10 @@ import { PortfolioAnalysisComponent } from './components/portfolio-analysis/port
     MatFormFieldModule,
     MatInputModule,
     MatIconModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatDividerModule
   ],
 
   providers: [],
