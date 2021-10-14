@@ -76,7 +76,7 @@ export class EditTradeDialogComponent implements OnInit {
       shortLong: this.shortLong.value,
       chartPattern: this.chartPattern.value,
       exitPrice: this.exitPrice.value,
-      exitDate: this.parseDate(this.exitDate.value),
+      exitDate: this.exitDate.value ? this.parseDate(this.exitDate.value): this.exitDate.value,
       commentsAfterBuy: this.commentsAfterBuy.value,
       commentsAfterSell: this.commentsAfterSell.value
     };
@@ -85,6 +85,7 @@ export class EditTradeDialogComponent implements OnInit {
   }
 
   parseDate(oldDate: Date): Date {
+    console.log("old date: "+oldDate);
     let newDate = new Date(oldDate);
     newDate.setMinutes(newDate.getMinutes() + newDate.getTimezoneOffset());
 
