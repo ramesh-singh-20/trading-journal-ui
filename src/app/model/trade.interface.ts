@@ -15,5 +15,5 @@ export interface Trade {
     chartPattern: string;
     commentsAfterBuy?: string;
     commentsAfterSell?: string;
-    
+    showMore?: boolean;
 }

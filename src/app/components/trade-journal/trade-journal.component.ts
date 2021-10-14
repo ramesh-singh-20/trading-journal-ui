@@ -44,6 +44,7 @@ export class TradeJournalComponent implements OnInit, AfterViewInit {
 
   tradesDataSource: TradeDatasourceService;
 
+
   @ViewChild(MatPaginator, {static: false})
   paginator: MatPaginator;
 
@@ -57,22 +58,38 @@ export class TradeJournalComponent implements OnInit, AfterViewInit {
 
     this.tradesDataSource.loadTrades(
       this.tradesDataSource.getPaginator().pageIndex,
-      this.tradesDataSource.getPaginator().pageSize
+      this.tradesDataSource.getPaginator().pageSize,
+      this.showLess
     );
     
     this.paginator.page.subscribe(() => {
       this.tradesDataSource.loadTrades(
         this.tradesDataSource.getPaginator().pageIndex,
-        this.tradesDataSource.getPaginator().pageSize
+        this.tradesDataSource.getPaginator().pageSize,
+        this.showLess
+        
       );
     });
+  }
+
+  showLess: boolean = true;
+
+
+  showMoreButtonClicked(): void {
+    if(this.showLess){
+      this.showLess= false;
+    }else{
+      this.showLess= true;
+    }
+    
+    this.retrieveTrades(this.showLess)
   }
 
   addTrade(): void {
     const dialogRef= this.dialog.open(AddTradeDialogComponent, {
       ariaLabel: 'Add Trade'
     });
-    dialogRef.afterClosed().subscribe(() => this.retrieveTrades());
+    dialogRef.afterClosed().subscribe(() => this.retrieveTrades(true));
   }
 
   updateTrade(element: any): void {
@@ -80,7 +97,7 @@ export class TradeJournalComponent implements OnInit, AfterViewInit {
       data: element,
       ariaLabel: 'Edit Trade'
     });
-    dialogRef.afterClosed().subscribe(() => this.retrieveTrades());
+    dialogRef.afterClosed().subscribe(() => this.retrieveTrades(true));
   }
 
   deleteTrade(id: number): void {
@@ -90,14 +107,15 @@ export class TradeJournalComponent implements OnInit, AfterViewInit {
       }
     });
 
-    dialogRef.afterClosed().subscribe(() => this.retrieveTrades());
+    dialogRef.afterClosed().subscribe(() => this.retrieveTrades(true));
 
   }
 
-  retrieveTrades(): void {
+  retrieveTrades(showLess: boolean): void {
     this.tradesDataSource.loadTrades(
       0,
-      10
+      10,
+      showLess
     );
   }
 }
