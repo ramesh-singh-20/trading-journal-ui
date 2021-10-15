@@ -7,7 +7,6 @@ import { AllAnalyticsComponent } from './components/all-analytics/all-analytics.
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatTableModule} from '@angular/material/table';
 import { HttpClientModule } from '@angular/common/http';
-import { SideNavComponent } from './components/side-nav/side-nav.component';
 import { AnalyticsByYearComponent } from './components/analytics-by-year/analytics-by-year.component';
 import { AnalyticsByYearAndShortLongComponent } from './components/analytics-by-year-and-short-long/analytics-by-year-and-short-long.component';
 import {MatSelectModule} from '@angular/material/select';
@@ -34,7 +33,6 @@ import { MatDividerModule } from '@angular/material/divider';
   declarations: [
     AppComponent,
     AllAnalyticsComponent,
-    SideNavComponent,
     AnalyticsByYearComponent,
     AnalyticsByYearAndShortLongComponent,
     AnalyticsByYearAndTradeTypeComponent,
