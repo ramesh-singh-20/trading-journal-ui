@@ -5,12 +5,13 @@ table {
 
 th.mat-header-cell {
   text-align: center !important;
+  padding: 3px;
 }
 
 td, th{
-    width: 32px;
     border: 1px solid currentColor;
-    text-align: center
+    text-align: center;
+    padding: 3px;
 }
 
 .mat-cell {
@@ -21,11 +22,9 @@ td, th{
   background-color: rgba(0,0,0,.05);
 }
 
-.show-button{
-  margin-left: 30px;
-  margin-top: 5px;
-  color: white;
-  background-color: rgb(20, 55, 209);
+.action-cell {
+  display: inline-flex;
 }
+
 
 
