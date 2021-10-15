@@ -16,10 +16,7 @@ export class AnalyticsByYearAndTradeTypeService {
 
 
   getAllAnalyticsByYearAndTradeType(tradeType: string): Observable<AnalyticsResponse> {
-    let headers = new HttpHeaders()
-      .set('Access-Control-Allow-Origin', '*')
-      .set('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS')
-      .set('Access-Control-Allow-Headers', 'Origin, Content-Type, X-Auth-Token');
+    let headers = this.getHeaders();
       let url: string= this.analyticsByYearAndTradeTypeURL+tradeType;
     return this.http.get<AnalyticsResponse>(url, {
       headers
@@ -27,23 +24,24 @@ export class AnalyticsByYearAndTradeTypeService {
   }
 
   getTradeTypeValues(): Observable<String[]> {
-    let headers = new HttpHeaders()
-      .set('Access-Control-Allow-Origin', '*')
-      .set('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS')
-      .set('Access-Control-Allow-Headers', 'Origin, Content-Type, X-Auth-Token');
+    let headers = this.getHeaders();
     return this.http.get<String[]>(this.distinctTradeTypeURL, {
       headers
     });
   }
 
   getAllAnalyticsByMonthAndTradeType(tradeType: string, year: string): Observable<AnalyticsResponse> {
-    let headers = new HttpHeaders()
-      .set('Access-Control-Allow-Origin', '*')
-      .set('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS')
-      .set('Access-Control-Allow-Headers', 'Origin, Content-Type, X-Auth-Token');
+    let headers = this.getHeaders();
       let url: string= this.analyticsByMonthAndTradeTypeURL+tradeType+'/'+year;
     return this.http.get<AnalyticsResponse>(url, {
       headers
     });
+  }
+
+  getHeaders(): HttpHeaders {
+    return new HttpHeaders()
+      .set('Access-Control-Allow-Origin', '*')
+      .set('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS')
+      .set('Access-Control-Allow-Headers', 'Origin, Content-Type, X-Auth-Token');
   }
 }

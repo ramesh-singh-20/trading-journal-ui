@@ -16,42 +16,37 @@ export class AnalyticsByYearMonthService {
   private allAnalyticsByChartPatternURL = 'http://localhost:8080/analytics/chart-pattern';
 
   getAllAnalytics(): Observable<AnalyticsResponse> {
-    let headers = new HttpHeaders()
-      .set('Access-Control-Allow-Origin', '*')
-      .set('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS')
-      .set('Access-Control-Allow-Headers', 'Origin, Content-Type, X-Auth-Token');
+    let headers = this.getHeaders();
     return this.http.get<AnalyticsResponse>(this.analyticsByYearAndMonth, {
       headers
     });
   }
 
   getAllAnalyticsByShortLong(): Observable<AnalyticsResponse> {
-    let headers = new HttpHeaders()
-      .set('Access-Control-Allow-Origin', '*')
-      .set('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS')
-      .set('Access-Control-Allow-Headers', 'Origin, Content-Type, X-Auth-Token');
+    let headers = this.getHeaders();
     return this.http.get<AnalyticsResponse>(this.allAnalyticsByShortLongURL, {
       headers
     });
   }
 
   getAllAnalyticsByTradeType(): Observable<AnalyticsResponse> {
-    let headers = new HttpHeaders()
-      .set('Access-Control-Allow-Origin', '*')
-      .set('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS')
-      .set('Access-Control-Allow-Headers', 'Origin, Content-Type, X-Auth-Token');
+    let headers = this.getHeaders();
     return this.http.get<AnalyticsResponse>(this.allAnalyticsByTradeTypeURL, {
       headers
     });
   }
 
   getAllAnalyticsByChartPattern(): Observable<AnalyticsResponse> {
-    let headers = new HttpHeaders()
-      .set('Access-Control-Allow-Origin', '*')
-      .set('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS')
-      .set('Access-Control-Allow-Headers', 'Origin, Content-Type, X-Auth-Token');
+    let headers = this.getHeaders();
     return this.http.get<AnalyticsResponse>(this.allAnalyticsByChartPatternURL, {
       headers
     });
+  }
+
+  getHeaders(): HttpHeaders {
+    return new HttpHeaders()
+      .set('Access-Control-Allow-Origin', '*')
+      .set('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS')
+      .set('Access-Control-Allow-Headers', 'Origin, Content-Type, X-Auth-Token');
   }
 }

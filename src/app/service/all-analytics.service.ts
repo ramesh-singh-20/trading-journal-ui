@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Analytics } from '../model/analytics.interface';
 import { Observable, of } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { AnalyticsResponse } from '../model/analytics-response.interface';
 
 @Injectable({
@@ -17,43 +16,38 @@ export class AllAnalyticsService {
   private allAnalyticsByChartPatternURL = 'http://localhost:8080/analytics/chart-pattern';
 
   getAllAnalytics(): Observable<AnalyticsResponse> {
-    let headers = new HttpHeaders()
-      .set('Access-Control-Allow-Origin', '*')
-      .set('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS')
-      .set('Access-Control-Allow-Headers', 'Origin, Content-Type, X-Auth-Token');
+    let headers = this.getHeaders();
     return this.http.get<AnalyticsResponse>(this.allAnalyticsURL, {
       headers
     });
   }
 
   getAllAnalyticsByShortLong(): Observable<AnalyticsResponse> {
-    let headers = new HttpHeaders()
-      .set('Access-Control-Allow-Origin', '*')
-      .set('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS')
-      .set('Access-Control-Allow-Headers', 'Origin, Content-Type, X-Auth-Token');
+    let headers = this.getHeaders();
     return this.http.get<AnalyticsResponse>(this.allAnalyticsByShortLongURL, {
       headers
     });
   }
 
   getAllAnalyticsByTradeType(): Observable<AnalyticsResponse> {
-    let headers = new HttpHeaders()
-      .set('Access-Control-Allow-Origin', '*')
-      .set('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS')
-      .set('Access-Control-Allow-Headers', 'Origin, Content-Type, X-Auth-Token');
+    let headers = this.getHeaders();
     return this.http.get<AnalyticsResponse>(this.allAnalyticsByTradeTypeURL, {
       headers
     });
   }
 
   getAllAnalyticsByChartPattern(): Observable<AnalyticsResponse> {
-    let headers = new HttpHeaders()
-      .set('Access-Control-Allow-Origin', '*')
-      .set('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS')
-      .set('Access-Control-Allow-Headers', 'Origin, Content-Type, X-Auth-Token');
+    let headers = this.getHeaders();
     return this.http.get<AnalyticsResponse>(this.allAnalyticsByChartPatternURL, {
       headers
     });
+  }
+
+  getHeaders(): HttpHeaders {
+    return new HttpHeaders()
+      .set('Access-Control-Allow-Origin', '*')
+      .set('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS')
+      .set('Access-Control-Allow-Headers', 'Origin, Content-Type, X-Auth-Token');
   }
 
 }

@@ -16,10 +16,7 @@ export class AnalyticsByYearAndShortLongService {
 
 
   getAllAnalyticsByYearAndShortLong(shortLong: string): Observable<AnalyticsResponse> {
-    let headers = new HttpHeaders()
-      .set('Access-Control-Allow-Origin', '*')
-      .set('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS')
-      .set('Access-Control-Allow-Headers', 'Origin, Content-Type, X-Auth-Token');
+    let headers = this.getHeaders();
       let url: string= this.analyticsByYearAndShortLongURL+shortLong;
     return this.http.get<AnalyticsResponse>(url, {
       headers
@@ -27,23 +24,24 @@ export class AnalyticsByYearAndShortLongService {
   }
 
   getShortLongValues(): Observable<String[]> {
-    let headers = new HttpHeaders()
-      .set('Access-Control-Allow-Origin', '*')
-      .set('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS')
-      .set('Access-Control-Allow-Headers', 'Origin, Content-Type, X-Auth-Token');
+    let headers = this.getHeaders();
     return this.http.get<String[]>(this.distinctShortLongURL, {
       headers
     });
   }
 
   getAllAnalyticsByMonthAndShortLong(shortLong: string, year: string): Observable<AnalyticsResponse> {
-    let headers = new HttpHeaders()
-      .set('Access-Control-Allow-Origin', '*')
-      .set('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS')
-      .set('Access-Control-Allow-Headers', 'Origin, Content-Type, X-Auth-Token');
+    let headers = this.getHeaders();
       let url: string= this.analyticsByMonthAndShortLongURL+shortLong+'/'+year;
     return this.http.get<AnalyticsResponse>(url, {
       headers
     });
+  }
+
+  getHeaders(): HttpHeaders {
+    return new HttpHeaders()
+      .set('Access-Control-Allow-Origin', '*')
+      .set('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS')
+      .set('Access-Control-Allow-Headers', 'Origin, Content-Type, X-Auth-Token');
   }
 }
