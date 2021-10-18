@@ -28,6 +28,7 @@ import { PortfolioAnalysisComponent } from './components/portfolio-analysis/port
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatDividerModule } from '@angular/material/divider';
+import { CheckCommentsDialogComponent } from './components/check-comments-dialog/check-comments-dialog.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { MatDividerModule } from '@angular/material/divider';
     AddTradeDialogComponent,
     DeleteTradeDialogComponent,
     EditTradeDialogComponent,
-    PortfolioAnalysisComponent
+    PortfolioAnalysisComponent,
+    CheckCommentsDialogComponent
   ],
   imports: [
     BrowserModule,

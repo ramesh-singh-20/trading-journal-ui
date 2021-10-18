@@ -6,6 +6,7 @@ import { Trade } from 'src/app/model/trade.interface';
 import { TradeDatasourceService } from 'src/app/service/trade-datasource.service';
 import { TradeService } from 'src/app/service/trade.service';
 import { AddTradeDialogComponent } from '../add-trade-dialog/add-trade-dialog.component';
+import { CheckCommentsDialogComponent } from '../check-comments-dialog/check-comments-dialog.component';
 import { DeleteTradeDialogComponent } from '../delete-trade-dialog/delete-trade-dialog.component';
 import { EditTradeDialogComponent } from '../edit-trade-dialog/edit-trade-dialog.component';
 
@@ -93,7 +94,7 @@ export class TradeJournalComponent implements OnInit, AfterViewInit {
   }
 
   updateTrade(element: any): void {
-    const dialogRef= this.dialog.open(EditTradeDialogComponent, {
+    const dialogRef= this.dialog.open(CheckCommentsDialogComponent, {
       data: element,
       ariaLabel: 'Edit Trade'
     });
