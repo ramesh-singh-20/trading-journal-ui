@@ -31,10 +31,8 @@ export class EditTradeDialogComponent implements OnInit {
         stock: [this.data.stock, Validators.required],
         entryPrice: [this.data.entryPrice, [Validators.required, Validators.pattern(this.priceRegex)]],
         entryDate: [this.data.entryDate, Validators.compose([Validators.required, DateValidator.dateVaidator])],
+        noOfShares: [this.data.noOfShares],
         stopLoss: [this.data.stopLoss, [Validators.required, Validators.pattern(this.priceRegex)]],
-        amountRisked: [this.data.amountRisked, [Validators.required, Validators.pattern(this.priceRegex)]],
-        riskPercentPosition: [this.data.riskPercentPosition, [Validators.required, Validators.pattern(this.priceRegex)]],
-        riskPercentPortfolio: [this.data.riskPercentPortfolio, [Validators.required, Validators.pattern(this.priceRegex)]],
         tradeType: [this.data.tradeType, Validators.required],
         shortLong: [this.data.shortLong, Validators.required],
         chartPattern: [this.data.chartPattern, Validators.required],
@@ -68,10 +66,8 @@ export class EditTradeDialogComponent implements OnInit {
       stock: this.stock.value,
       entryPrice: this.entryPrice.value,
       entryDate: this.parseDate(this.entryDate.value),
+      noOfShares: this.noOfShares.value,
       stopLoss: this.stopLoss.value,
-      amountRisked: this.amountRisked.value,
-      riskPercentPosition: this.riskPercentPosition.value,
-      riskPercentPortfolio: this.riskPercentPortfolio.value,
       tradeType: this.tradeType.value,
       shortLong: this.shortLong.value,
       chartPattern: this.chartPattern.value,
@@ -108,20 +104,12 @@ export class EditTradeDialogComponent implements OnInit {
     return this.editTradeFormGroup.get('entryDate');
   }
 
+  get noOfShares(): AbstractControl {
+    return this.editTradeFormGroup.get('noOfShares');
+  }
+
   get stopLoss(): AbstractControl {
     return this.editTradeFormGroup.get('stopLoss');
-  }
-
-  get amountRisked(): AbstractControl {
-    return this.editTradeFormGroup.get('amountRisked');
-  }
-
-  get riskPercentPosition(): AbstractControl {
-    return this.editTradeFormGroup.get('riskPercentPosition');
-  }
-
-  get riskPercentPortfolio(): AbstractControl {
-    return this.editTradeFormGroup.get('riskPercentPortfolio');
   }
 
   get tradeType(): AbstractControl {

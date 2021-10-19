@@ -3,10 +3,11 @@ export interface Trade {
     stock: string;
     entryPrice: number;
     entryDate: Date;
+    noOfShares: number,
     stopLoss: number,
-    amountRisked: number,
-    riskPercentPosition: number,
-    riskPercentPortfolio: number,
+    amountRisked?: number,
+    riskPercentPosition?: number,
+    riskPercentPortfolio?: number,
     exitPrice?: number;
     exitDate?: Date;
     isProfitable?: string;

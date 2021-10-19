@@ -36,6 +36,14 @@
                             </mat-error>
                         </mat-form-field>
                         <mat-form-field>
+                            <mat-label>No Of Shares</mat-label>
+                            <input matInput type="number" placeHolder="No Of Shares" formControlName="noOfShares"
+                                required>
+                            <mat-error *ngIf="noOfShares.hasError('required')">
+                                This field is required.
+                            </mat-error>
+                        </mat-form-field>
+                        <mat-form-field>
                             <mat-label>Stop Loss</mat-label>
                             <input matInput type="number" placeHolder="Stop Loss" formControlName="stopLoss" required>
                             <mat-error *ngIf="stopLoss.hasError('required')">
@@ -43,39 +51,6 @@
                             </mat-error>
                             <mat-error *ngIf="stopLoss.hasError('pattern')">
                                 Please enter valid price.
-                            </mat-error>
-                        </mat-form-field>
-                        <mat-form-field>
-                            <mat-label>Amount Risked</mat-label>
-                            <input matInput type="number" placeHolder="Amount Risked" formControlName="amountRisked"
-                                required>
-                            <mat-error *ngIf="amountRisked.hasError('required')">
-                                This field is required.
-                            </mat-error>
-                            <mat-error *ngIf="amountRisked.hasError('pattern')">
-                                Please enter valid price.
-                            </mat-error>
-                        </mat-form-field>
-                        <mat-form-field>
-                            <mat-label>Risk Per Position</mat-label>
-                            <input matInput type="number" placeHolder="Risk Per Position"
-                                formControlName="riskPercentPosition" required>
-                            <mat-error *ngIf="riskPercentPosition.hasError('required')">
-                                This field is required.
-                            </mat-error>
-                            <mat-error *ngIf="riskPercentPosition.hasError('pattern')">
-                                Please enter valid value.
-                            </mat-error>
-                        </mat-form-field>
-                        <mat-form-field>
-                            <mat-label>Risk Per Portfolio</mat-label>
-                            <input matInput type="number" placeHolder="Risk Per Portfolio"
-                                formControlName="riskPercentPortfolio" required>
-                            <mat-error *ngIf="riskPercentPortfolio.hasError('required')">
-                                This field is required.
-                            </mat-error>
-                            <mat-error *ngIf="riskPercentPortfolio.hasError('pattern')">
-                                Please enter valid value.
                             </mat-error>
                         </mat-form-field>
                         <mat-form-field>

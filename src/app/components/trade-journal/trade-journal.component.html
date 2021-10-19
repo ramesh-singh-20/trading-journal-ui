@@ -107,8 +107,13 @@
             </ng-container>
 
             <ng-container matColumnDef="Show More">
-                <th mat-header-cell *matHeaderCellDef> Show More</th>
+                <th mat-header-cell *matHeaderCellDef> Show More </th>
                 <td mat-cell *matCellDef="let element"> {{element.showMore}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="No Of Shares">
+                <th mat-header-cell *matHeaderCellDef> No Of Shares </th>
+                <td mat-cell *matCellDef="let element"> {{element.noOfShares}} </td>
             </ng-container>
 
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

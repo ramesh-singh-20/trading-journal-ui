@@ -8,7 +8,6 @@ import { TradeService } from 'src/app/service/trade.service';
 import { AddTradeDialogComponent } from '../add-trade-dialog/add-trade-dialog.component';
 import { CheckCommentsDialogComponent } from '../check-comments-dialog/check-comments-dialog.component';
 import { DeleteTradeDialogComponent } from '../delete-trade-dialog/delete-trade-dialog.component';
-import { EditTradeDialogComponent } from '../edit-trade-dialog/edit-trade-dialog.component';
 
 @Component({
   selector: 'app-trade-journal',
