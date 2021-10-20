@@ -93,6 +93,8 @@ export class TradeJournalComponent implements OnInit, AfterViewInit {
   }
 
   updateTrade(element: any): void {
+    console.log("Id: "+element.id);
+    console.log("Shares: "+element.noOfShares);
     const dialogRef= this.dialog.open(CheckCommentsDialogComponent, {
       data: element,
       ariaLabel: 'Edit Trade'

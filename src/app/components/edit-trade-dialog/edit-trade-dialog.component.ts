@@ -81,7 +81,6 @@ export class EditTradeDialogComponent implements OnInit {
   }
 
   parseDate(oldDate: Date): Date {
-    console.log("old date: "+oldDate);
     let newDate = new Date(oldDate);
     newDate.setMinutes(newDate.getMinutes() + newDate.getTimezoneOffset());
 

@@ -43,6 +43,7 @@ export class AnalyticsByYearAndChartPatternComponent implements OnInit {
   getAllAnalyticsByYearAndChartPattern(chartPattern: string): void {
     this.chartPatternString= chartPattern;
     this.hasMonthResults= false;
+    this.hasResults= false;
     this.analyticsByYearAndChartPattern.getAllAnalyticsByYearAndChartPattern(chartPattern)
         .subscribe(
           response => {
